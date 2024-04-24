@@ -2,14 +2,13 @@ import Scene2D from "../../canvas-2d/Scene2D"
 import { line } from "../../canvas-2d/Shapes2D"
 import { clamp, distance2d, randomRange } from "../../utils/MathUtils"
 import Bubble from "./Bubbles"
-import {Composite} from "matter-js";
+
 
 export default class SceneBouncingBubbles extends Scene2D {
     constructor(nBubbles, id = "canvas-scene", topWall = true, bottomWall = true) {
         super(id)
         this.topWall = topWall
         this.bottomWall = bottomWall
-
         /** debug */
         this.params.threshold = 75
         this.params.lineWidth = 2
@@ -58,6 +57,15 @@ export default class SceneBouncingBubbles extends Scene2D {
         this.clear()
         this.draw()
 
+    }
+
+    removeBubble(bubble) {
+        const index = this.bubbles.indexOf(bubble);
+        if (index !== -1) {
+            this.bubbles.splice(index, 1);
+            this.clear();
+            this.draw();
+        }
     }
 
     update() {
