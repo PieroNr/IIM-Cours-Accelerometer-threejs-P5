@@ -1,6 +1,7 @@
-import { Accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors"
+
 
 import EventEmitter from "../events/EventEmitter"
+import { Accelerometer } from "../../libs/sensor-polyfills/src/motion-sensors";
 
 export default class DeviceAcceleration extends EventEmitter {
     constructor() {
